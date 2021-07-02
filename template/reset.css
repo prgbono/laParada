@@ -21,15 +21,19 @@ body {
   font-weight: lighter;
 }
 
-/* TODO: Remove??? 
-Media and responsive 
-img,
-video {
-  max-width: 100%;
-} */
-
 .footer {
   width: 100%;
+}
+
+/* Common */
+h1 {
+  font-size: 1.8rem;
+  padding: 1rem 0;
+}
+
+h2 {
+  font-size: 1.6rem;
+  padding: 1rem 0;
 }
 
 a {
