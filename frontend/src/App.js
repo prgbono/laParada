@@ -5,8 +5,8 @@ import ProductScreen from './screens/ProductScreen.js';
 
 function App() {
   return (
-    <div className="grid-container">
-      <Router>
+    <Router>
+      <div className="grid-container">
         <header className="row">
           <div>
             <a href="/" className="brand">
@@ -22,11 +22,9 @@ function App() {
           <Route path="/product/:id" component={ProductScreen}></Route>
           <Route path="/" component={HomeScreen} exact></Route>
         </main>
-        <footer className="row center">
-          Mariscos La Parada SL / All right reserved
-        </footer>
-      </Router>
-    </div>
+        <footer className="row center">Mariscos La Parada SL</footer>
+      </div>
+    </Router>
   );
 }
 

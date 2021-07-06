@@ -6,7 +6,8 @@ const data = {
       category: 'Pescado',
       image: '/images/hueva.jpg',
       price: 12,
-      existencias: 80.5,
+      stock: 80.5,
+      stockLimit: 5,
       description:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentiu optio, eaque rerum!',
     },
@@ -16,7 +17,8 @@ const data = {
       category: 'Marisco',
       image: '/images/cigala.jpeg',
       price: 23,
-      existencias: 80.5,
+      stock: 80.5,
+      stockLimit: 5,
       description:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentiu optio, eaque rerum!',
     },
@@ -26,7 +28,8 @@ const data = {
       category: 'Marisco',
       image: '/images/gamba.jpg',
       price: 25,
-      existencias: 80.5,
+      stock: 57,
+      stockLimit: 5,
       description:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentiu optio, eaque rerum!',
     },
@@ -36,7 +39,8 @@ const data = {
       category: 'Marisco',
       image: '/images/gambon.jpeg',
       price: 12.95,
-      existencias: 80.5,
+      stock: 80.5,
+      stockLimit: 5,
       description:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentiu optio, eaque rerum!',
     },
@@ -46,7 +50,8 @@ const data = {
       category: 'Pescado',
       image: '/images/atun.jpg',
       price: 12,
-      existencias: 80.5,
+      stock: 80.5,
+      stockLimit: 5,
       description:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentiu optio, eaque rerum!',
     },
@@ -56,7 +61,8 @@ const data = {
       category: 'Pescado',
       image: '/images/pulpo.jpg',
       price: 7.95,
-      existencias: 80.5,
+      stock: 80.5,
+      stockLimit: 5,
       description:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentiu optio, eaque rerum!',
     },
@@ -66,7 +72,8 @@ const data = {
       category: 'Pescado',
       image: '/images/pescado.jpeg',
       price: 8.95,
-      existencias: 80.5,
+      stock: 80.5,
+      stockLimit: 5,
       description:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentiu optio, eaque rerum!',
     },
