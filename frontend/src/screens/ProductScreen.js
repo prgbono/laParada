@@ -1,6 +1,6 @@
 import React from 'react';
-// FIXME: delete this and the file data.js
-import data from '../data.js';
+// FIXME: get rid data.js file off
+import data from './../data.js';
 import { Link } from 'react-router-dom';
 
 export default function ProductScreen(props) {
