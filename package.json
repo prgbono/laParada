@@ -1,0 +1,26 @@
+{
+  "name": "laparada",
+  "version": "1.0.0",
+  "description": "La Parada, a project for KC",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon --watch backend --exec node --experimental-modules backend/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prgbono/laParada.git"
+  },
+  "author": "Francisco Ríos Galán",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/prgbono/laParada/issues"
+  },
+  "homepage": "https://github.com/prgbono/laParada#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.9"
+  }
+}

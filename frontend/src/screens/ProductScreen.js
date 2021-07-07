@@ -3,6 +3,7 @@ import data from './../data.js';
 import { Link } from 'react-router-dom';
 
 export default function ProductScreen(props) {
+  // We have {history, location and match} property objects from react router
   const product = data.products.find(
     product => product._id === props.match.params.id,
   );
