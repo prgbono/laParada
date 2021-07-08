@@ -39,7 +39,7 @@ export default function ProductScreen(props) {
                 <div className="row">
                   <div>
                     {product.stock <= 0 ? (
-                      <span className="error">No disponible</span>
+                      <span className="danger">No disponible</span>
                     ) : product.stock <= product.stockLimit ? (
                       <span className="warning">
                         Quedan pocas existencias de este producto
