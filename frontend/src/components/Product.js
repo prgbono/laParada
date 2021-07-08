@@ -1,5 +1,4 @@
 import React from 'react';
-import Rating from './Rating.js';
 
 export default function Product(props) {
   const { product } = props;
