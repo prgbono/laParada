@@ -1,22 +1,43 @@
 import express from 'express';
 import asyncHandler from 'express-async-handler';
-import data from './../data.js';
-import User from './../models/UserModel.js';
+import data from '../data.js';
+import Product from '../models/ProductModel.js';
 
-const userRouter = express.Router();
+const productRouter = express.Router();
 
-// TODO: Change /seed endpoint for a populate database script
-userRouter.get(
-  '/seed',
+// GET /
+productRouter.get(
+  '/',
   asyncHandler(async (req, res) => {
-    //FIXME:  !!!! - Anyone could remove User collection data by running this endpoint!
-    await User.deleteMany();
-    const createdUsers = await User.insertMany(data.users);
-    res.send({ createdUsers });
+    const products = await Product.find({});
+    res.send(products);
   }),
 );
 
-export default userRouter;
+// TODO: Change /seed endpoint for a populate database script
+// GET /seed
+productRouter.get(
+  '/seed',
+  asyncHandler(async (req, res) => {
+    //FIXME:  !!!! - Anyone could remove collection data by running this endpoint!
+    await Product.deleteMany();
+    const createdProducts = await Product.insertMany(data.products);
+    res.send({ createdProducts });
+  }),
+);
+
+// GET /:id
+productRouter.get(
+  '/:id',
+  asyncHandler(async (req, res) => {
+    const _id = req.params.id;
+    const product = await Product.findById(_id);
+    if (product) res.send(product);
+    else res.status(404).send({ message: 'Producto no encontrado' });
+  }),
+);
+
+export default productRouter;
 
 // TODO: Esbuenaprácticameterenvariableslosparámetrosdelas peticiones.
 /*

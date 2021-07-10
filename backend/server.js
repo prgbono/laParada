@@ -1,22 +1,22 @@
 import express from 'express';
-import data from './data.js';
+// import data from './data.js';
 import mongoose from 'mongoose';
 import userRouter from './routes/userRouter.js';
+import productRouter from './routes/productRouter.js';
 
 const app = express();
-mongoose.connect('mongodb://localhost/laparada', {
+mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/laparada', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
 });
 
 // Rutas del Api
-app.get('/api/products', (req, res) => {
-  res.send(data.products);
-});
 
 // All from /api/users will be managed with userRouter.js
 app.use('/api/users', userRouter);
+// All from /api/products will be managed with productRouter.js
+app.use('/api/products', productRouter);
 
 // Rutas del Website
 app.get('/', (req, res) => {
@@ -34,6 +34,7 @@ app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
 
+// ----------------------------------------------------------------
 // TODO: THIS WHAT I USED IN THE PRACTICE!!! THIS WOULD BE IN Error handler
 // catch 404 and forward to error handler
 // app.use((req, res, next) => {
@@ -62,3 +63,4 @@ app.listen(port, () => {
 //     res.json({ error: err.message });
 //     return;
 //   }
+// ----------------------------------------------------------------

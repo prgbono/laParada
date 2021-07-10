@@ -29,5 +29,5 @@ const userSchema = new mongoose.Schema(
 // Model
 const User = mongoose.model('User', userSchema);
 
-// Don't use arrow functions on Mongoose methods
+// TODO: Don't use arrow functions on Mongoose methods
 export default User;
