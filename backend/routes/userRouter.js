@@ -5,6 +5,16 @@ import User from './../models/UserModel.js';
 
 const userRouter = express.Router();
 
+// GET /
+//TODO: Deshabilitar o securizar este endpoint!
+userRouter.get(
+  '/',
+  asyncHandler(async (req, res) => {
+    const users = await User.find({});
+    res.send(users);
+  }),
+);
+
 // TODO: Change /seed endpoint for a populate database script
 userRouter.get(
   '/seed',

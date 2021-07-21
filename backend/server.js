@@ -5,11 +5,17 @@ import userRouter from './routes/userRouter.js';
 import productRouter from './routes/productRouter.js';
 
 const app = express();
-mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/laparada', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
-});
+const MONGODB_STRING_CONNECTION =
+  process.env.MONGODB_CONNECTION_STR || 'mongodb://localhost/laparada';
+mongoose.connect(
+  //TODO: process.env.MISMO_NOMBRE_QUE_ARCHIVO_SUPERVISOR!!! Cambiarlo en ambos sitios, aquí y en /etc/supervisor/conf.d/laparadaBE.conf
+  MONGODB_STRING_CONNECTION,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+  },
+);
 
 // Rutas del Api
 
