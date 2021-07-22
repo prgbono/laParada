@@ -5,7 +5,7 @@ import Product from '../models/ProductModel.js';
 
 const productRouter = express.Router();
 
-// GET /
+// GET /api/products
 productRouter.get(
   '/',
   asyncHandler(async (req, res) => {
@@ -15,7 +15,7 @@ productRouter.get(
 );
 
 // TODO: Change /seed endpoint for a populate database script
-// GET /seed
+// GET /api/products/seed
 productRouter.get(
   '/seed',
   asyncHandler(async (req, res) => {
@@ -26,14 +26,15 @@ productRouter.get(
   }),
 );
 
-// GET /:id
+// GET /api/products/:id
 productRouter.get(
   '/:id',
   asyncHandler(async (req, res) => {
     const _id = req.params.id;
     const product = await Product.findById(_id);
-    if (product) res.send(product);
-    else res.status(404).send({ message: 'Producto no encontrado' });
+    product
+      ? res.send(product)
+      : res.status(404).send({ message: 'Producto no encontrado' });
   }),
 );
 

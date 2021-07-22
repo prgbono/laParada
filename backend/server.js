@@ -1,5 +1,4 @@
 import express from 'express';
-// import data from './data.js';
 import mongoose from 'mongoose';
 import userRouter from './routes/userRouter.js';
 import productRouter from './routes/productRouter.js';
@@ -18,7 +17,6 @@ mongoose.connect(
 );
 
 // Rutas del Api
-
 // All from /api/users will be managed with userRouter.js
 app.use('/api/users', userRouter);
 // All from /api/products will be managed with productRouter.js
