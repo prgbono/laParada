@@ -2,8 +2,19 @@ import express from 'express';
 import mongoose from 'mongoose';
 import userRouter from './routes/userRouter.js';
 import productRouter from './routes/productRouter.js';
+import dotenv from 'dotenv';
 
+dotenv.config();
 const app = express();
+// Next 2 instructions populate req.body in Node Apps.
+// Allow JSON as body requests. Postman - body / raw / JSON
+app.use(express.json());
+// Allow x-www-form-uerlencoded body requests. Postman - body / x-www-form-uerlencoded
+app.use(express.urlencoded({ extended: false }));
+// app.use(logger('dev'));
+// app.use(cookieParser());
+// app.use(express.static(path.join(__dirname, 'public')));
+
 const MONGODB_STRING_CONNECTION =
   process.env.MONGODB_CONNECTION_STR || 'mongodb://localhost/laparada';
 mongoose.connect(
