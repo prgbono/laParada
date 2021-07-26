@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import HomeScreen from './screens/HomeScreen.js';
+import LoginScreen from './screens/LoginScreen.js';
 import ProductScreen from './screens/ProductScreen.js';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         </header>
         <main>
           <Route path="/product/:id" component={ProductScreen}></Route>
+          <Route path="/login" component={LoginScreen}></Route>
           <Route path="/" component={HomeScreen} exact></Route>
         </main>
         <footer className="row center">Mariscos La Parada SL</footer>
