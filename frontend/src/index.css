@@ -47,16 +47,16 @@ a {
 }
 
 a:hover {
-  color: #ff8000;
+  color: var(--ORANGE);
 }
 
 header a {
-  color: #fff;
+  color: var(--BEIGE);
   padding: 1rem;
 }
 
 a.brand {
-  color: #fff;
+  color: var(--BEIGE);
   font-size: 3rem;
 }
 
@@ -76,7 +76,7 @@ button {
   border: 0.1rem #a4a4a4 solid;
   font-size: 1.6rem;
   font-family: Helvetica, Arial, sans-serif;
-  /* font-weight: lighter; */
+  font-weight: lighter;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #f8f8f8;
