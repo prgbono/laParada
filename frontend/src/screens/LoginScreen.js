@@ -1,18 +1,30 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, Redirect } from 'react-router-dom';
 import { login } from '../actions/userActions';
-import { USER_LOGIN_REQUEST } from '../constants/userConstants';
+import LoadingBox from '../components/LoadingBox';
+import MessageBox from '../components/MessageBox';
 
-export default function LoginScreen() {
+export default function LoginScreen(props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
+  const redirect = props.location.search
+    ? props.location.search.split('=')[1]
+    : '/';
+
+  const userLogin = useSelector(state => state.userLogin);
+  const { userInfo, loading, error } = userLogin;
 
   const submitHandler = e => {
     e.preventDefault();
     dispatch(login(email, password));
   };
+
+  useEffect(() => {
+    if (userInfo) props.history.push(redirect);
+    // <Redirect to={redirect} />;
+  }, [props.history, redirect, userInfo]);
 
   return (
     <>
@@ -20,6 +32,8 @@ export default function LoginScreen() {
         <div>
           <h1>Login</h1>
         </div>
+        {loading && <LoadingBox />}
+        {error && <MessageBox variant="danger">{error}</MessageBox>}
         <div>
           <label htmlFor="email">Email</label>
           <input
