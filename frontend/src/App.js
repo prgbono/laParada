@@ -25,7 +25,8 @@ function App() {
             </a>
           </div>
           <div>
-            <Link to="/cart">Carrito</Link>
+            {/* FIXME: Add carrito menu item (uncomment) */}
+            {/* <Link to="/cart">Carrito</Link> */}
             {userInfo ? (
               <div className="dropdown">
                 <Link to="#">
@@ -33,7 +34,7 @@ function App() {
                 </Link>
                 <ul className="dropdown-content">
                   <li>
-                    <Link to="#signout" onClick={signoutHandler}>
+                    <Link to="/login" onClick={signoutHandler}>
                       Salir
                     </Link>
                   </li>

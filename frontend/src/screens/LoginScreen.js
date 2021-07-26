@@ -23,7 +23,7 @@ export default function LoginScreen(props) {
 
   useEffect(() => {
     if (userInfo) props.history.push(redirect);
-    // <Redirect to={redirect} />;
+    // FIXME: <Redirect to={redirect} />;
   }, [props.history, redirect, userInfo]);
 
   return (
