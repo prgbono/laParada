@@ -3,8 +3,12 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import HomeScreen from './screens/HomeScreen.js';
 import LoginScreen from './screens/LoginScreen.js';
 import ProductScreen from './screens/ProductScreen.js';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 function App() {
+  const { userInfo } = useSelector(state => state.userLogin);
+
   return (
     <Router>
       <div className="grid-container">
@@ -15,8 +19,12 @@ function App() {
             </a>
           </div>
           <div>
-            <a href="/cart">Carrito</a>
-            <a href="/login">Entrar</a>
+            <Link to="/cart">Carrito</Link>
+            {userInfo ? (
+              <Link to="#">{userInfo.name}</Link>
+            ) : (
+              <Link to="/login">Entrar</Link>
+            )}
           </div>
         </header>
         <main>

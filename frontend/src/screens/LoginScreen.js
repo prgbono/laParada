@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { login } from '../actions/userActions';
+import { USER_LOGIN_REQUEST } from '../constants/userConstants';
 
 export default function LoginScreen() {
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
 
   const submitHandler = e => {
     e.preventDefault();
+    dispatch(login(email, password));
   };
 
   return (
