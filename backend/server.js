@@ -15,11 +15,11 @@ app.use(express.urlencoded({ extended: false }));
 // app.use(cookieParser());
 // app.use(express.static(path.join(__dirname, 'public')));
 
-const MONGODB_STRING_CONNECTION =
+const MONGODB_CONNECTION_STR =
   process.env.MONGODB_CONNECTION_STR || 'mongodb://localhost/laparada';
 mongoose.connect(
   //TODO: process.env.MISMO_NOMBRE_QUE_ARCHIVO_SUPERVISOR!!! Cambiarlo en ambos sitios, aquí y en /etc/supervisor/conf.d/laparadaBE.conf
-  MONGODB_STRING_CONNECTION,
+  MONGODB_CONNECTION_STR,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
