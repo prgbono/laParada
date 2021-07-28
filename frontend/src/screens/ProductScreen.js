@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import LoadingBox from '../components/LoadingBox';
@@ -10,10 +10,15 @@ export default function ProductScreen(props) {
   const productId = props.match.params.id;
   const productDetails = useSelector(state => state.productDetails);
   const { loading, error, product } = productDetails;
+  const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
     dispatch(detailsProduct(productId));
   }, [dispatch, productId]);
+
+  const addToCartHandler = () => {
+    props.history.push(`/cart/${productId}?quantity=${quantity}`);
+  };
 
   return (
     <>
@@ -65,9 +70,38 @@ export default function ProductScreen(props) {
                       </div>
                     </div>
                   </li>
-                  <li>
-                    <button className="primary block">Añadir al carrito</button>
-                  </li>
+                  {product.stock > 0 && (
+                    <>
+                      <li>
+                        <div className="row">
+                          <div>Cantidad</div>
+                          <div>
+                            <select
+                              value={quantity}
+                              onChange={e => setQuantity(e.target.value)}
+                            >
+                              {/* TODO: 
+                              Ahora mismo la forma de añadir cantidad no es real. El dropdown se rellena con la propiedad stock de los productos, que para que esto no falle ha de ser entera. Esto no es real, stock debe ser float.*/}
+                              {[...Array(product.stock).keys()].map(item => (
+                                //FIXME: What if there are 1K kilos???
+                                <option key={item + 1} value={item + 1}>
+                                  {item + 1}
+                                </option>
+                              ))}
+                            </select>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <button
+                          onClick={addToCartHandler}
+                          className="primary block"
+                        >
+                          Añadir al carrito
+                        </button>
+                      </li>
+                    </>
+                  )}
                 </ul>
               </div>
             </div>

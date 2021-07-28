@@ -6,6 +6,7 @@ import ProductScreen from './screens/ProductScreen.js';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { signout } from './actions/userActions.js';
+import CartScreen from './screens/CartScreen.js';
 
 function App() {
   const userLogin = useSelector(state => state.userLogin);
@@ -25,8 +26,7 @@ function App() {
             </a>
           </div>
           <div>
-            {/* FIXME: Add carrito menu item (uncomment) */}
-            {/* <Link to="/cart">Carrito</Link> */}
+            <Link to="/cart">Carrito</Link>
             {userInfo ? (
               <div className="dropdown">
                 <Link to="#">
@@ -46,6 +46,7 @@ function App() {
           </div>
         </header>
         <main>
+          <Route path="/cart:id?" component={CartScreen}></Route>
           <Route path="/product/:id" component={ProductScreen}></Route>
           <Route path="/login" component={LoginScreen}></Route>
           <Route path="/" component={HomeScreen} exact></Route>
