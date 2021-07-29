@@ -15,18 +15,25 @@ function App() {
   const signoutHandler = () => {
     dispatch(signout());
   };
+  const cart = useSelector(state => state.cart);
+  const { cartItems } = cart;
 
   return (
     <Router>
       <div className="grid-container">
         <header className="row">
           <div>
-            <a href="/" className="brand">
+            <Link className="brand" to="/">
               La Parada
-            </a>
+            </Link>
           </div>
           <div>
-            <Link to="/cart">Carrito</Link>
+            <Link to="/cart">
+              Carrito
+              {cartItems.length > 0 && (
+                <span className="badge">{cartItems.length}</span>
+              )}
+            </Link>
             {userInfo ? (
               <div className="dropdown">
                 <Link to="#">
@@ -46,7 +53,7 @@ function App() {
           </div>
         </header>
         <main>
-          <Route path="/cart:id?" component={CartScreen}></Route>
+          <Route path="/cart/:id?" component={CartScreen}></Route>
           <Route path="/product/:id" component={ProductScreen}></Route>
           <Route path="/login" component={LoginScreen}></Route>
           <Route path="/" component={HomeScreen} exact></Route>
