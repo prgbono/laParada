@@ -213,7 +213,7 @@ button.block {
 
 /* Header / Cart /badge */
 .badge {
-  background-color: var(--RED);
+  background-color: var(--ORANGE);
   color: #fff;
   border-radius: 50%;
   padding: 0.2rem 0.7rem;
