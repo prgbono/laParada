@@ -1,4 +1,4 @@
-import { CART_ADD_ITEM } from './../constants/cartConstants';
+import { CART_ADD_ITEM, CART_REMOVE_ITEM } from './../constants/cartConstants';
 import Axios from 'axios';
 
 export const addToCart =
@@ -8,7 +8,6 @@ export const addToCart =
     dispatch({
       type: CART_ADD_ITEM,
       payload: {
-        //TODO: named as product instead of productId because is going to be saved in DB
         product: data._id,
         name,
         description,
@@ -24,3 +23,11 @@ export const addToCart =
       JSON.stringify(getState().cart.cartItems),
     );
   };
+
+export const removeFromCart = productId => (dispatch, getState) => {
+  dispatch({
+    type: CART_REMOVE_ITEM,
+    payload: productId,
+  });
+  localStorage.setItem('cartItems', JSON.stringify(getState().cart.cartItems));
+};
