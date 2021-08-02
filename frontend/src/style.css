@@ -48,12 +48,12 @@ footer {
 }
 
 .row.top {
-  align-items: flex-start;
+  align-items: center;
 }
 
 .col-1 {
   flex: 1 1 25rem;
-  padding: 1rem;
+  padding: 1rem 1rem 3.5rem 1rem;
 }
 
 .col-2 {
@@ -61,9 +61,18 @@ footer {
   padding: 1rem;
 }
 
+.min-30 {
+  min-width: 30rem;
+}
+
 /* Image */
 img {
   border-radius: 0.5rem;
+}
+
+img.small {
+  max-width: 5rem;
+  width: 100%;
 }
 
 img.medium {
@@ -152,7 +161,7 @@ button:hover {
 }
 
 button.primary {
-  background-color: var(--WARNING);
+  background-color: var(--LIGHT-ORANGE);
 }
 
 button.block {
