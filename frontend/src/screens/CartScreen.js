@@ -24,7 +24,6 @@ export default function CartScreen(props) {
   };
 
   const checkoutHandler = () => {
-    console.log('checkoutHandler id:');
     //TODO: Ver dónde redirigir
   };
 
