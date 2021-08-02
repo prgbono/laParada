@@ -161,7 +161,7 @@ button:hover {
 }
 
 button.primary {
-  background-color: var(--LIGHT-ORANGE);
+  background-color: var(--ORANGE);
 }
 
 button.block {
@@ -219,4 +219,18 @@ button.block {
   padding: 0.2rem 0.7rem;
   font-size: 1.4rem;
   margin-left: 0.5rem;
+}
+
+/* Checkout steps */
+.checkout-steps > div {
+  border-top: 0.3rem solid var(--BEIGE);
+  color: var(--BEIGE);
+  flex: 1;
+  padding: 1rem;
+  font-weight: bold;
+}
+
+.checkout-steps > div.active {
+  border-top-color: var(--ORANGE);
+  color: var(--ORANGE);
 }
