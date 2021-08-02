@@ -1,16 +1,24 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import CheckoutSteps from './../components/CheckoutSteps';
+import { saveShippingAddress } from './../actions/cartActions';
 
 export default function ShippingAddressScreen(props) {
-  const [fullName, setFullName] = useState('');
-  const [address, setAddress] = useState('');
-  const [city, setCity] = useState('');
-  const [postalCode, setPostalCode] = useState('');
-  const [country, setCountry] = useState('');
+  const cart = useSelector(state => state.cart);
+  const { shippingAddress } = cart;
+  const [fullName, setFullName] = useState(shippingAddress.fullName);
+  const [address, setAddress] = useState(shippingAddress.address);
+  const [city, setCity] = useState(shippingAddress.city);
+  const [postalCode, setPostalCode] = useState(shippingAddress.postalCode);
+  const [country, setCountry] = useState(shippingAddress.country);
 
+  const dispatch = useDispatch();
   const submitHandler = event => {
     event.preventDefault();
-    // TODO: dispatch ADD_BUYER_ADDRESS
+    dispatch(
+      saveShippingAddress({ fullName, address, city, postalCode, country }),
+    );
+    props.history.push('/payment');
   };
   return (
     <>
@@ -81,7 +89,9 @@ export default function ShippingAddressScreen(props) {
         </div>
         <div>
           <label />
-          <button type="submit">Continuar</button>
+          <button className="primary" type="submit">
+            Continuar
+          </button>
         </div>
       </form>
     </>
