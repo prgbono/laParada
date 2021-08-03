@@ -6,9 +6,12 @@ import { savePaymentMethod } from './../actions/cartActions';
 export default function PaymentMethodScreen(props) {
   const cart = useSelector(state => state.cart);
   const { shippingAddress } = cart;
+
+  // No shipping address then go back to fill it before payment details
   if (!shippingAddress.address) {
     props.history.push('/checkout/shipping');
   }
+
   const [paymentMethod, setPaymentMethod] = useState('Paypal');
   const dispatch = useDispatch();
 
@@ -29,7 +32,7 @@ export default function PaymentMethodScreen(props) {
           {/* // TODO: Card payment method! */}
           <div>
             <input
-              type="checkbox"
+              type="radio"
               id="paypal"
               value="Paypal"
               name="paymentMethod"
@@ -45,7 +48,7 @@ export default function PaymentMethodScreen(props) {
         <div>
           <div>
             <input
-              type="checkbox"
+              type="radio"
               id="stripe"
               value="Stripe"
               name="paymentMethod"
