@@ -13,14 +13,13 @@ export default function PlaceOrderScreen(props) {
   );
 
   // TODO: calculate shippingPrice based on weight of the order (kgs)!
-  cart.shippingPrice = cart.itemsPrice > 60 ? 0 : 100;
+  cart.shippingPrice = cart.itemsPrice > 60 ? 0 : 10;
   cart.taxPrice = cart.itemsPrice * 0.21;
   cart.totalPrice = cart.itemsPrice + cart.shippingPrice + cart.taxPrice;
 
   const placeOrderHandler = () => {
     // e.preventDefault();
     // TODO: dispatch placeOrder action
-    console.log('placeOrderHandler');
   };
 
   return (
@@ -35,9 +34,7 @@ export default function PlaceOrderScreen(props) {
                 <p>
                   {cart.shippingAddress.fullName}
                   <br />
-                  {cart.shippingAddress.address}
-                  <br />
-                  {`${cart.shippingAddress.city}, CP ${cart.shippingAddress.postalCode}. ${cart.shippingAddress.country}`}
+                  {`${cart.shippingAddress.address}. ${cart.shippingAddress.city}, CP ${cart.shippingAddress.postalCode}. ${cart.shippingAddress.country}`}
                 </p>
               </div>
             </li>
@@ -63,8 +60,10 @@ export default function PlaceOrderScreen(props) {
                           </Link>
                         </div>
                         <div>
-                          {`${item.quantity}Kg x ${item.price}€ = ${toPrice(
-                            item.price * item.quantity,
+                          {`${item.quantity}Kg x ${item.price.toFixed(
+                            2,
+                          )}€ = ${toPrice(item.price * item.quantity).toFixed(
+                            2,
                           )}€`}
                         </div>
                       </div>
