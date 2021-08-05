@@ -1,7 +1,7 @@
 'use strict';
 import mongoose from 'mongoose';
 
-//Schema
+// Schema
 const productSchema = new mongoose.Schema(
   {
     name: { type: String, required: true, trim: true },
@@ -10,7 +10,7 @@ const productSchema = new mongoose.Schema(
     description: { type: String, trim: true },
     image: { type: String },
     category: { type: String },
-    // category: { type: mongoose.Schema.Types.ObjectId, ref: 'Category'},
+    //TODO: category: { type: mongoose.Schema.Types.ObjectId, ref: 'Category'},
   },
   {
     timestamps: true,
@@ -20,8 +20,8 @@ const productSchema = new mongoose.Schema(
   },
 );
 
-// Model
+// Product Model
 const Product = mongoose.model('Product', productSchema);
 
-// TODO: Don't use arrow functions on Mongoose methods
+// Don't use arrow functions on Mongoose methods
 export default Product;

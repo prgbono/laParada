@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import userRouter from './routes/userRouter.js';
 import productRouter from './routes/productRouter.js';
+import orderRouter from './routes/orderRouter.js';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -32,6 +33,8 @@ mongoose.connect(
 app.use('/api/users', userRouter);
 // All from /api/products will be managed with productRouter.js
 app.use('/api/products', productRouter);
+// All from /api/orders will be managed with orderRouter.js
+app.use('/api/orders', orderRouter);
 
 // Rutas del Website
 app.get('/', (req, res) => {
