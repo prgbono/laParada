@@ -21,8 +21,6 @@ orderRouter.post(
       user,
     } = req.body;
 
-    // TODO: check if user comes being logged and not being logged
-    // const user = await User.findOne({ user._id??? });
     if (orderItems.length === 0) {
       res.status(400).send({ message: 'El carrito está vacío' });
     } else {
