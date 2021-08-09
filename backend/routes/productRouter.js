@@ -49,6 +49,7 @@ router.delete('/:id', asyncHandler(async(req, res, next) =>{
 
   Esbuenaprácticaquelosdocumentostenganuna propiedad de borrado lógico. Esto es marcar un documento como borrado pero mantenerlo. Funcionalmente está borrado pero mantenemos la info.
   HayquetratardeimplementarlalógicaenelModelo-> Recomendación de Javier, NO en los controladores. Los controladores sólo sirven al modelo los datos limpios, la lógica ha de estar en el modelo.
+  TODO: la lógica ha de estar en el modelo.
 
 */
 

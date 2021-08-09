@@ -40,4 +40,19 @@ orderRouter.post(
   }),
 );
 
+// GET /api/orders/:id
+orderRouter.get(
+  '/:id',
+  // isJWTAuth
+  asyncHandler(async (req, res) => {
+    const orderId = req.params.id;
+    const order = await Order.findById(orderId);
+    if (order) {
+      res.send(order);
+    } else {
+      res.status(404).send({ message: 'Pedido no encontrado' });
+    }
+  }),
+);
+
 export default orderRouter;
