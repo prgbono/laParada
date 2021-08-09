@@ -35,6 +35,11 @@ app.use('/api/users', userRouter);
 app.use('/api/products', productRouter);
 // All from /api/orders will be managed with orderRouter.js
 app.use('/api/orders', orderRouter);
+// Paypal CLIENT_ID
+// FIXME: Endpoint abierto que da el clientID, protegerlo!!!!
+app.get('/api/config/paypal', (req, res) => {
+  res.send(process.env.PAYPAL_CLIENT_ID || 'sandbox');
+});
 
 // Rutas del Website
 app.get('/', (req, res) => {
