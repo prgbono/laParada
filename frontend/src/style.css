@@ -133,6 +133,11 @@ img.large {
   background-color: #ffe0e0;
 }
 
+.alert-success {
+  color: var(--SUCCESS);
+  background-color: #eeffe0;
+}
+
 /* Button */
 input,
 select,

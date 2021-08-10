@@ -78,10 +78,8 @@ export default function PlaceOrderScreen(props) {
                           </Link>
                         </div>
                         <div>
-                          {`${item.quantity}Kg x ${item.price.toFixed(
-                            2,
-                          )}€ = ${toPrice(item.price * item.quantity).toFixed(
-                            2,
+                          {`${item.quantity}Kg x ${item.price}€ = ${toPrice(
+                            item.price * item.quantity,
                           )}€`}
                         </div>
                       </div>

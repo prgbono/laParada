@@ -39,7 +39,6 @@ export default function CartScreen(props) {
         ) : (
           <ul>
             {cartItems.map(item => (
-              //TODO: product or id???
               <li key={item.product}>
                 <div className="row">
                   <div>
@@ -88,10 +87,9 @@ export default function CartScreen(props) {
                 Total ({cartItems.length}{' '}
                 {cartItems.length === 1 ? 'producto' : 'productos'}
                 {') = '}
-                {cartItems.reduce(
-                  (acc, item) => acc + item.quantity * item.price,
-                  0,
-                )}
+                {cartItems
+                  .reduce((acc, item) => acc + item.quantity * item.price, 0)
+                  .toFixed(2)}
                 €
               </h2>
             </li>
