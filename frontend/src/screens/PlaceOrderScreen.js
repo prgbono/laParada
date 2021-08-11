@@ -22,8 +22,10 @@ export default function PlaceOrderScreen(props) {
 
   // TODO: calculate shippingPrice based on weight of the order (kgs)!
   cart.shippingPrice = cart.itemsPrice > 60 ? 0 : 10;
-  cart.taxPrice = cart.itemsPrice * 0.21;
-  cart.totalPrice = cart.itemsPrice + cart.shippingPrice + cart.taxPrice;
+  cart.taxPrice = (cart.itemsPrice * 0.21).toFixed(2);
+  cart.totalPrice = parseFloat(
+    cart.itemsPrice + cart.shippingPrice + cart.taxPrice,
+  ).toFixed(2);
 
   const placeOrderHandler = () => {
     // Add user to the order if loggedIn
@@ -117,7 +119,7 @@ export default function PlaceOrderScreen(props) {
               <li>
                 <div className="row">
                   <div>IVA (21%)</div>
-                  <div>{cart.taxPrice.toFixed(2)}€</div>
+                  <div>{cart.taxPrice}€</div>
                 </div>
               </li>
               <li>
@@ -126,7 +128,7 @@ export default function PlaceOrderScreen(props) {
                     <strong>Total</strong>
                   </div>
                   <div>
-                    <strong>{cart.totalPrice.toFixed(2)}€</strong>
+                    <strong>{cart.totalPrice}€</strong>
                   </div>
                 </div>
               </li>

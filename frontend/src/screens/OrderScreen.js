@@ -105,9 +105,9 @@ export default function OrderScreen(props) {
                           </Link>
                         </div>
                         <div>
-                          {`${item.quantity}Kg x ${item.price}€ = ${
+                          {`${item.quantity}Kg x ${item.price}€ = ${(
                             item.price * item.quantity
-                          }€`}
+                          ).toFixed(2)}€`}
                         </div>
                       </div>
                     </li>
