@@ -29,7 +29,6 @@ export default function PaymentMethodScreen(props) {
           <h1>Forma de Pago</h1>
         </div>
         <div>
-          {/* // TODO: Card payment method! */}
           <div>
             <input
               type="radio"
@@ -53,11 +52,28 @@ export default function PaymentMethodScreen(props) {
               value="Stripe"
               name="paymentMethod"
               required
+              disabled
               onChange={e => {
                 setPaymentMethod(e.target.value);
               }}
             ></input>
             <label htmlFor="stripe">Stripe</label>
+          </div>
+        </div>
+        <div>
+          <div>
+            <input
+              type="radio"
+              id="pickUpAtStore"
+              value="pickUpAtStore"
+              name="paymentMethod"
+              required
+              disabled
+              onChange={e => {
+                setPaymentMethod(e.target.value);
+              }}
+            ></input>
+            <label htmlFor="pickUpAtStore">Recogida en tienda</label>;
           </div>
         </div>
         <div>
