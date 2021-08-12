@@ -25,36 +25,38 @@ function App() {
   return (
     <Router>
       <div className="grid-container">
-        <header className="row">
-          <div>
-            <Link className="brand" to="/">
-              La Parada
-            </Link>
-          </div>
-          <div>
-            <Link to="/cart">
-              Carrito
-              {cartItems.length > 0 && (
-                <span className="badge">{cartItems.length}</span>
+        <header className="header-fixed">
+          <nav className="row">
+            <ul>
+              <Link className="brand" to="/">
+                La Parada
+              </Link>
+            </ul>
+            <ul>
+              <Link to="/cart">
+                Carrito
+                {cartItems.length > 0 && (
+                  <span className="badge">{cartItems.length}</span>
+                )}
+              </Link>
+              {userInfo ? (
+                <div className="dropdown">
+                  <Link to="#">
+                    {userInfo.name} <i className="fa fa-caret-down"></i>{' '}
+                  </Link>
+                  <ul className="dropdown-content">
+                    <li>
+                      <Link to="/login" onClick={signoutHandler}>
+                        Salir
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              ) : (
+                <Link to="/login">Entrar</Link>
               )}
-            </Link>
-            {userInfo ? (
-              <div className="dropdown">
-                <Link to="#">
-                  {userInfo.name} <i className="fa fa-caret-down"></i>{' '}
-                </Link>
-                <ul className="dropdown-content">
-                  <li>
-                    <Link to="/login" onClick={signoutHandler}>
-                      Salir
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-            ) : (
-              <Link to="/login">Entrar</Link>
-            )}
-          </div>
+            </ul>
+          </nav>
         </header>
         <main>
           <Route path="/cart/:id?" component={CartScreen}></Route>

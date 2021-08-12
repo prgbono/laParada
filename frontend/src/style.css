@@ -7,12 +7,13 @@
   --GREY: #c0c0c0;
   --SUCCESS: #3ed628;
   --WARNING: #fcb322;
+  --NAVBAR-HEIGHT: 4rem;
 }
 
 .grid-container {
   display: grid;
   grid-template-areas:
-    'header'
+    'nav'
     'main'
     'footer';
   grid-template-columns: 1fr;
@@ -20,9 +21,15 @@
   height: 100%;
 }
 
-header {
-  grid-area: header;
+.header-fixed {
   background-color: var(--BLUE);
+  position: fixed;
+  width: 100%;
+  height: var(--NAVBAR-HEIGHT);
+}
+
+nav {
+  grid-area: nav;
 }
 
 main {

@@ -50,7 +50,7 @@ a:hover {
   color: var(--ORANGE);
 }
 
-header a {
+nav a {
   color: var(--BEIGE);
   padding: 1rem;
 }
