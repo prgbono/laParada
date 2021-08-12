@@ -40,15 +40,15 @@ productRouter.get(
 
 export default productRouter;
 
-// TODO: Esbuenaprácticameterenvariableslosparámetrosdelas peticiones.
+// TODO: Es buena práctica meter en variables los parámetros de las peticiones.
 /*
 router.delete('/:id', asyncHandler(async(req, res, next) =>{
   const _id = req.params.id;
   ...
   }));
 
-  Esbuenaprácticaquelosdocumentostenganuna propiedad de borrado lógico. Esto es marcar un documento como borrado pero mantenerlo. Funcionalmente está borrado pero mantenemos la info.
-  HayquetratardeimplementarlalógicaenelModelo-> Recomendación de Javier, NO en los controladores. Los controladores sólo sirven al modelo los datos limpios, la lógica ha de estar en el modelo.
+  Es buena práctica que los documentos tengan una propiedad de borrado lógico. Esto es marcar un documento como borrado pero mantenerlo. Funcionalmente está borrado pero mantenemos la info.
+  Hay que tratar de implementar la lógica en el Modelo -> Recomendación de Javier, NO en los controladores. Los controladores sólo sirven al modelo los datos limpios, la lógica ha de estar en el modelo.
   TODO: la lógica ha de estar en el modelo.
 
 */

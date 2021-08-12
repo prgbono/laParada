@@ -24,7 +24,6 @@ export default function CartScreen(props) {
   };
 
   const checkoutHandler = () => {
-    //TODO: Ver dónde redirigir
     props.history.push('/shipping');
   };
 

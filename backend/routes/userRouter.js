@@ -47,22 +47,3 @@ userRouter.post(
 );
 
 export default userRouter;
-
-// TODO: Esbuenaprácticameterenvariableslosparámetrosdelas peticiones.
-/*
-router.delete('/:id', asyncHandler(async(req, res, next) =>{
-  const _id = req.params.id;
-  ...
-  }));
-
-  Esbuenaprácticaquelosdocumentostenganuna propiedad de borrado lógico. Esto es marcar un documento como borrado pero mantenerlo. Funcionalmente está borrado pero mantenemos la info.
-  HayquetratardeimplementarlalógicaenelModelo-> Recomendación de Javier, NO en los controladores. Los controladores sólo sirven al modelo los datos limpios, la lógica ha de estar en el modelo.
-
-*/
-
-/* TODO: 
-  - Change /seed endpoint for a populate database script
-  - Isolate database connection with a connectMongoose file
-  - Error handler en server.js, está comentado
-  - función isAPI
-*/

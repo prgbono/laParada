@@ -34,7 +34,6 @@ export const createOrder = order => async (dispatch, getState) => {
 
 export const detailsOrder = orderId => async dispatch => {
   dispatch({ type: ORDER_DETAILS_REQUEST, payload: orderId });
-  // FIXME: Retrieve userInfo - isJWTAuth??
   try {
     const { data } = await Axios.get(`/api/orders/${orderId}`);
     dispatch({ type: ORDER_DETAILS_SUCCESS, payload: data });
@@ -49,7 +48,6 @@ export const detailsOrder = orderId => async dispatch => {
 
 export const payOrder = (order, paymentResult) => async dispatch => {
   dispatch({ type: ORDER_PAY_REQUEST, payload: { order, paymentResult } });
-  // FIXME: Retrieve userInfo - isJWTAuth??
   try {
     const { data } = await Axios.put(
       `/api/orders/${order._id}/pay`,

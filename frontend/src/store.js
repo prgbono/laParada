@@ -27,7 +27,6 @@ const initialState = {
       ? JSON.parse(localStorage.getItem('userInfo'))
       : null,
   },
-  //TODO: filters:
 };
 
 const reducer = combineReducers({
