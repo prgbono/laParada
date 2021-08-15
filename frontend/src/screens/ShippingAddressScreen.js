@@ -33,7 +33,7 @@ export default function ShippingAddressScreen(props) {
             type="text"
             id="fullName"
             name="fullName"
-            value={fullName}
+            value={fullName.replace(/(<([^>]+)>)/gi, '')}
             onChange={e => setFullName(e.target.value)}
             placeholder="nombre completo"
             required
@@ -45,7 +45,7 @@ export default function ShippingAddressScreen(props) {
             type="text"
             id="address"
             name="address"
-            value={address}
+            value={address.replace(/(<([^>]+)>)/gi, '')}
             onChange={e => setAddress(e.target.value)}
             placeholder="dirección"
             required
@@ -57,7 +57,7 @@ export default function ShippingAddressScreen(props) {
             type="text"
             id="city"
             name="city"
-            value={city}
+            value={city.replace(/(<([^>]+)>)/gi, '')}
             onChange={e => setCity(e.target.value)}
             placeholder="ciudad"
             required
@@ -66,7 +66,7 @@ export default function ShippingAddressScreen(props) {
         <div>
           <label htmlFor="postalCode">Código postal</label>
           <input
-            type="text"
+            type="number"
             id="postalCode"
             name="postalCode"
             value={postalCode}
@@ -81,7 +81,7 @@ export default function ShippingAddressScreen(props) {
             type="text"
             id="country"
             name="country"
-            value={country}
+            value={country.replace(/(<([^>]+)>)/gi, '')}
             onChange={e => setCountry(e.target.value)}
             placeholder="país"
             required
