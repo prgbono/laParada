@@ -33,3 +33,13 @@ export const isJWTAuth = (req, res, next) => {
     });
   }
 };
+
+// get SERVER_URL //FIXME: Not used yet
+export const getServerUrl = () => {
+  const port = process.env.SERVER_PORT || 5000;
+  const dev = process.env.NODE_ENV !== 'production';
+  const SERVER_URL = dev
+    ? `http://localhost:${port}`
+    : 'https://mariscoslaparada.es';
+  return SERVER_URL;
+};
