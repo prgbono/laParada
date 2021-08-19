@@ -16,7 +16,13 @@ export default function ShippingAddressScreen(props) {
   const submitHandler = event => {
     event.preventDefault();
     dispatch(
-      saveShippingAddress({ fullName, address, city, postalCode, country }),
+      saveShippingAddress({
+        fullName: fullName.replace(/(<([^>]+)>)/gi, ''),
+        address: address.replace(/(<([^>]+)>)/gi, ''),
+        city: city.replace(/(<([^>]+)>)/gi, ''),
+        postalCode,
+        country: country.replace(/(<([^>]+)>)/gi, ''),
+      }),
     );
     props.history.push('/payment');
   };
@@ -33,7 +39,7 @@ export default function ShippingAddressScreen(props) {
             type="text"
             id="fullName"
             name="fullName"
-            value={fullName.replace(/(<([^>]+)>)/gi, '')}
+            value={fullName}
             onChange={e => setFullName(e.target.value)}
             placeholder="nombre completo"
             required
@@ -45,7 +51,7 @@ export default function ShippingAddressScreen(props) {
             type="text"
             id="address"
             name="address"
-            value={address.replace(/(<([^>]+)>)/gi, '')}
+            value={address}
             onChange={e => setAddress(e.target.value)}
             placeholder="dirección"
             required
@@ -57,7 +63,7 @@ export default function ShippingAddressScreen(props) {
             type="text"
             id="city"
             name="city"
-            value={city.replace(/(<([^>]+)>)/gi, '')}
+            value={city}
             onChange={e => setCity(e.target.value)}
             placeholder="ciudad"
             required
@@ -81,7 +87,7 @@ export default function ShippingAddressScreen(props) {
             type="text"
             id="country"
             name="country"
-            value={country.replace(/(<([^>]+)>)/gi, '')}
+            value={country}
             onChange={e => setCountry(e.target.value)}
             placeholder="país"
             required
