@@ -42,10 +42,34 @@ app.get('/', (req, res) => {
   res.send('Server is ready');
 });
 
-// Error handler
-app.use((err, req, res, next) => {
-  res.status(500).send({ message: err.message });
+// error handler
+app.use(function (err, req, res, next) {
+  console.log('server.js Error handler');
+  if (err.array) {
+    // validation error
+    err.status = 422;
+    const errInfo = err.array({ onlyFirstError: true })[0];
+    err.message = isAPIRequest(req)
+      ? { message: `${errInfo.param} no válido`, errors: err.mapped() }
+      : `No válido - ${errInfo.param} ${errInfo.msg}`;
+  }
+
+  // set status code
+  err.status = err.status || 500;
+  res.status(err.status);
+
+  // JSON response for API requests
+  if (isAPIRequest(req)) {
+    res.json({ error: err.message });
+    return;
+  }
+
+  res.send({ message: err.message });
 });
+
+function isAPIRequest(req) {
+  return req.originalUrl.indexOf('/api') === 0;
+}
 
 const port = process.env.SERVER_PORT || 5000;
 app.listen(port, () => {

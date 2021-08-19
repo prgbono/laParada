@@ -4,8 +4,10 @@ import data from './../data.js';
 import User from './../models/UserModel.js';
 import bcrypt from 'bcryptjs';
 import { generateToken } from '../utils.js';
+import validator from 'express-validator';
 
 const userRouter = express.Router();
+const { check, validationResult } = validator;
 
 // GET /
 //TODO: Deshabilitar o securizar este endpoint!
@@ -30,7 +32,15 @@ userRouter.get(
 
 userRouter.post(
   '/login',
+  [
+    check('email').isEmail().normalizeEmail().withMessage('Email no válido'),
+    check('password')
+      .not()
+      .isEmpty()
+      .withMessage('La contraseña no puede estar vacía'),
+  ],
   asyncHandler(async (req, res) => {
+    validationResult(req).throw();
     const { email, password } = req.body;
     const user = await User.findOne({ email });
     if (user && bcrypt.compareSync(password, user.password)) {
