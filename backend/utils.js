@@ -1,4 +1,5 @@
 import jwt from 'jsonwebtoken';
+import bcrypt from 'bcryptjs';
 
 export const generateToken = user => {
   const { _id, name, email, isAdmin } = user;
@@ -43,3 +44,11 @@ export const getServerUrl = () => {
     : 'https://mariscoslaparada.es';
   return SERVER_URL;
 };
+
+export const hashPass = plainPass => {
+  return bcrypt.hashSync(plainPass, 5);
+};
+
+// export const isCorrectPass = plainPass => {
+//   return bcrypt.compare(plainPass, _____);
+// };

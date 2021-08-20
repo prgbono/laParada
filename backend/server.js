@@ -44,11 +44,16 @@ app.get('/', (req, res) => {
 
 // error handler
 app.use(function (err, req, res, next) {
-  console.log('server.js Error handler');
+  // FIXME: Consoles, remove them
+  console.log('server.js Error handler, err: ', err);
   if (err.array) {
     // validation error
+    console.log(
+      `error de validación, err.array.lenght: ${err.array.length} y array de errores ${err.array}`,
+    );
     err.status = 422;
     const errInfo = err.array({ onlyFirstError: true })[0];
+    console.log(`error de validación, errorInfo: ${errInfo}`);
     err.message = isAPIRequest(req)
       ? { message: `${errInfo.param} no válido`, errors: err.mapped() }
       : `No válido - ${errInfo.param} ${errInfo.msg}`;
