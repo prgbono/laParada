@@ -50,18 +50,6 @@ productRouter.get(
 
 export default productRouter;
 
-/* TODO:
-  DONE - Commit de shippingAddressScreen.js
-  DONE - Corregir justo esto
-  - Revisar las entradas de datos de los otros routers y de server.js
-    - productRouter DONE
-    - userRouter DONE
-    - server DONE
-    - orderRouter
-  - withMessage()
-  - Sanitizers. En el login, en /product:id, en post y put de /order
-*/
-
 /*
 TODO: Es buena práctica meter en variables los parámetros de las peticiones.
 La lógica ha de estar en el modelo.

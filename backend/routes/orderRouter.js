@@ -9,6 +9,7 @@ const orderRouter = express.Router();
 orderRouter.post(
   '/',
   // isJWTAuth,
+  // TODO: [KPF-220] validate POST order body
   asyncHandler(async (req, res) => {
     const {
       orderItems,
@@ -44,6 +45,7 @@ orderRouter.post(
 orderRouter.get(
   '/:id',
   // isJWTAuth
+  // TODO: validate PUT order body
   asyncHandler(async (req, res) => {
     const orderId = req.params.id;
     const order = await Order.findById(orderId);
