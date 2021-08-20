@@ -13,7 +13,6 @@ export const listProducts = () => async dispatch => {
     type: PRODUCT_LIST_REQUEST,
   });
   try {
-    //TODO BASE_URL for api calls DOT_ENV
     const { data } = await Axios.get('/api/products');
     dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
   } catch (error) {
@@ -27,9 +26,7 @@ export const detailsProduct = productId => async dispatch => {
     payload: productId,
   });
   try {
-    //TODO BASE_URL for api calls DOT_ENV
     const { data } = await Axios.get(`/api/products/${productId}`);
-
     dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: data });
   } catch (error) {
     dispatch({

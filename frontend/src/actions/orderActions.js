@@ -16,7 +16,6 @@ export const createOrder = order => async (dispatch, getState) => {
   dispatch({ type: ORDER_CREATE_REQUEST, payload: order });
 
   try {
-    //FIXME: $BASE_URL
     const { data } = await Axios.post('/api/orders', order);
     dispatch({ type: ORDER_CREATE_SUCCESS, payload: data.order });
     dispatch({ type: CART_EMPTY });

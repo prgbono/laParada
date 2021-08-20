@@ -18,7 +18,6 @@ productRouter.get(
   }),
 );
 
-// TODO: Change /seed endpoint for a populate database script
 // GET /api/products/seed
 productRouter.get(
   '/seed',
@@ -55,9 +54,4 @@ TODO: Es buena práctica meter en variables los parámetros de las peticiones.
 La lógica ha de estar en el modelo.
 Es buena práctica que los documentos tengan una propiedad de borrado lógico. Esto es marcar un documento como borrado pero mantenerlo. Funcionalmente está borrado pero mantenemos la info.
 Hay que tratar de implementar la lógica en el Modelo -> Recomendación de Javier, NO en los controladores. Los controladores sólo sirven al modelo los datos limpios, la lógica ha de estar en el modelo.
-/* 
-  - Change /seed endpoint for a populate database script
-  - Isolate database connection with a connectMongoose file
-  - DONE - Error handler en server.js, está comentado
-  - DONE - función isAPI
 */
