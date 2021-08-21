@@ -77,26 +77,16 @@ userRouter.post(
         options: { min: 4 },
       },
     },
-    isAdmin: {
-      isBoolean: true,
-      errorMessage: 'Valor no válido',
-    },
   }),
   asyncHandler(async (req, res) => {
     validationResult(req).throw();
-    const { name, email, password, isAdmin } = req.body;
-    console.log('userRouter POST /register - body: ', req.body);
+    const { name, email, password } = req.body;
     const user = new User({
       name,
       email,
       password: await hashPass(password),
-      isAdmin,
     });
     const createdUser = await user.save();
-    console.log(
-      'userRouter POST /register - userCreated after saving in the db: ',
-      createdUser,
-    );
     res.send({
       _id: createdUser._id,
       name: createdUser.name,
