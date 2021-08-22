@@ -44,8 +44,6 @@ app.get('/', (req, res) => {
 
 // error handler
 app.use(function (err, req, res, next) {
-  // FIXME: Consoles, remove them
-  console.log('server.js Error handler, err: ', err);
   if (err.array) {
     // validation error
     err.status = 422;
