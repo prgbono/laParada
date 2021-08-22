@@ -216,7 +216,7 @@ button.block {
   position: absolute;
   display: none;
   right: 0;
-  min-width: 12rem;
+  min-width: 15rem;
   padding: 1rem;
   z-index: 1;
   background-color: var(--BLUE);
@@ -250,4 +250,22 @@ button.block {
 .checkout-steps > div.active {
   border-top-color: var(--ORANGE);
   color: var(--ORANGE);
+}
+
+/* Table */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.table tbody tr:nth-of-type(odd) {
+  background-color: #f4f4f4;
+}
+.table td,
+.table th {
+  text-align: left;
+  border: 0.1rem solid #e4e4e4;
+  padding: 0.5rem;
+}
+.table button {
+  margin: 0 0.2rem;
 }
