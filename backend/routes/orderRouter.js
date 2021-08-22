@@ -1,14 +1,25 @@
 import express from 'express';
 import Order from './../models/OrderModel.js';
 import asyncHandler from 'express-async-handler';
-// import { isJWTAuth } from './../utils.js';
+import { isJWTAuth } from './../utils.js';
 
 const orderRouter = express.Router();
+
+// GET /api/orders/mine
+// Pay attention to the order of the endpoints. This one after /:id provokes errors
+orderRouter.get(
+  '/mine',
+  isJWTAuth,
+  asyncHandler(async (req, res) => {
+    const userId = req.user;
+    const orders = await Order.find({ user: userId });
+    res.send(orders);
+  }),
+);
 
 // POST /api/order
 orderRouter.post(
   '/',
-  // isJWTAuth,
   // TODO: [KPF-220] validate POST order body
   asyncHandler(async (req, res) => {
     const {
@@ -44,6 +55,7 @@ orderRouter.post(
 // GET /api/orders/:id
 orderRouter.get(
   '/:id',
+  // TODO: [KPF-227] Do we allow retrieving orders without being loged in? Sharing ID order would be possible
   // isJWTAuth
   // TODO: validate PUT order body
   asyncHandler(async (req, res) => {
