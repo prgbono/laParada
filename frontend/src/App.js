@@ -12,6 +12,7 @@ import PaymentMethodScreen from './screens/PaymentMethodScreen.js';
 import PlaceOrderScreen from './screens/PlaceOrderScreen.js';
 import OrderScreen from './screens/OrderScreen.js';
 import RegisterScreen from './screens/RegisterScreen.js';
+import OrderHistoryScreen from './screens/OrderHistoryScreen.js';
 
 function App() {
   const userLogin = useSelector(state => state.userLogin);
@@ -47,6 +48,9 @@ function App() {
                   </Link>
                   <ul className="dropdown-content">
                     <li>
+                      <Link to="/order-history">Mis pedidos</Link>
+                    </li>
+                    <li>
                       <Link to="/login" onClick={signoutHandler}>
                         Salir
                       </Link>
@@ -68,6 +72,7 @@ function App() {
           <Route path="/payment" component={PaymentMethodScreen}></Route>
           <Route path="/placeorder" component={PlaceOrderScreen}></Route>
           <Route path="/order/:id" component={OrderScreen}></Route>
+          <Route path="/order-history" component={OrderHistoryScreen}></Route>
           <Route path="/" component={HomeScreen} exact></Route>
         </main>
         <footer className="row center">Mariscos La Parada SL</footer>
