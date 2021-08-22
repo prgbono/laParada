@@ -9,17 +9,7 @@ import validator from 'express-validator';
 const userRouter = express.Router();
 const { check, checkSchema, validationResult } = validator;
 
-// GET /
-//TODO: Deshabilitar o securizar este endpoint!
-userRouter.get(
-  '/',
-  asyncHandler(async (req, res) => {
-    const users = await User.find({});
-    res.send(users);
-  }),
-);
-
-// TODO: Change /seed endpoint for a populate database script
+// GET /seed
 userRouter.get(
   '/seed',
   asyncHandler(async (req, res) => {
@@ -30,6 +20,7 @@ userRouter.get(
   }),
 );
 
+// POST /login
 userRouter.post(
   '/login',
   [
@@ -57,6 +48,7 @@ userRouter.post(
   }),
 );
 
+// POST /register
 userRouter.post(
   '/register',
   // validations for user registration
@@ -94,6 +86,19 @@ userRouter.post(
       isAdmin: createdUser.isAdmin,
       token: generateToken(createdUser),
     });
+  }),
+);
+
+// GET '/:id',
+// TODO:
+
+// GET /
+//TODO: Deshabilitar o securizar este endpoint!
+userRouter.get(
+  '/',
+  asyncHandler(async (req, res) => {
+    const users = await User.find({});
+    res.send(users);
   }),
 );
 

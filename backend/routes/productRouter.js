@@ -9,7 +9,7 @@ import validator from 'express-validator';
 const productRouter = express.Router();
 const { check, validationResult } = validator;
 
-// GET /api/products
+// GET /
 productRouter.get(
   '/',
   asyncHandler(async (req, res) => {
