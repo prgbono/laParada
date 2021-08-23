@@ -7,6 +7,9 @@ import {
   USER_REGISTER_REQUEST,
   USER_REGISTER_SUCCESS,
   USER_REGISTER_FAIL,
+  USER_DETAILS_REQUEST,
+  USER_DETAILS_FAIL,
+  USER_DETAILS_SUCCESS,
 } from '../constants/userConstants';
 
 export const login = (email, password) => async dispatch => {
@@ -19,8 +22,8 @@ export const login = (email, password) => async dispatch => {
     dispatch({
       type: USER_LOGIN_FAIL,
       payload:
-        error.response && error.response.data.error.message
-          ? error.response.data.error.message
+        error.response && error.response.data.message
+          ? error.response.data.message
           : error.message,
     });
   }
@@ -45,6 +48,22 @@ export const register = (name, email, password) => async dispatch => {
           ? error.response.data.error.message
           : error.message,
     });
+  }
+};
+
+export const detailsUser = user => async (dispatch, getState) => {
+  dispatch({ type: USER_DETAILS_REQUEST });
+  try {
+    const { data } = await Axios.get(`/api/users/${user._id}`, {
+      headers: { Authorization: user.token },
+    });
+    dispatch({ type: USER_DETAILS_SUCCESS, payload: data });
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+    dispatch({ type: USER_DETAILS_FAIL, payload: message });
   }
 };
 
