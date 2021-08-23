@@ -76,7 +76,7 @@ userRouter.post(
     const user = new User({
       name,
       email,
-      password: await hashPass(password),
+      password: hashPass(password),
     });
     const createdUser = await user.save();
     res.send({
@@ -99,6 +99,34 @@ userRouter.get(
     user
       ? res.send(user)
       : res.status(404).send({ message: 'Usuario no encontrado' });
+  }),
+);
+
+// PUT /profile
+userRouter.put(
+  '/profile',
+  isJWTAuth,
+  asyncHandler(async (req, res) => {
+    const user = await User.findById(req.user); // req.user comes from utils.isJWTAuth
+    if (user) {
+      const {
+        name: updatedName,
+        email: updatedEmail,
+        password: updatedPassword,
+      } = req.body;
+      const { name, email } = user;
+      user.name = updatedName || name;
+      user.email = updatedEmail || email;
+      if (updatedPassword) user.password = hashPass(updatedPassword);
+      const updatedUser = await user.save();
+      res.send({
+        _id: updatedUser._id,
+        name: updatedUser.name,
+        email: updatedUser.email,
+        isAdmin: updatedUser.isAdmin,
+        token: generateToken(updatedUser),
+      });
+    } else res.status(418).send({ message: 'I am never going to be here' });
   }),
 );
 
