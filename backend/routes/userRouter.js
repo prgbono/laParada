@@ -3,7 +3,7 @@ import asyncHandler from 'express-async-handler';
 import data from './../data.js';
 import User from './../models/UserModel.js';
 import bcrypt from 'bcryptjs';
-import { generateToken, hashPass } from '../utils.js';
+import { generateToken, hashPass, isJWTAuth } from '../utils.js';
 import validator from 'express-validator';
 
 const userRouter = express.Router();
@@ -90,7 +90,17 @@ userRouter.post(
 );
 
 // GET '/:id',
-// TODO:
+userRouter.get(
+  '/:id',
+  // TODO: validate userID
+  isJWTAuth,
+  asyncHandler(async (req, res) => {
+    const user = await User.findById(req.params.id);
+    user
+      ? res.send(user)
+      : res.status(404).send({ message: 'Usuario no encontrado' });
+  }),
+);
 
 // GET /
 //TODO: Deshabilitar o securizar este endpoint!
