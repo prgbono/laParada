@@ -28,6 +28,7 @@ export const isJWTAuth = (req, res, next) => {
       if (err) res.status(401).send({ message: 'Token no autorizado' });
       else {
         // send userId to the next middleware which probably will need it
+        // FIXME: [KPF-230] Send userID as user makes confusion! Fix is only change next line by req.userId = payload._id;
         req.user = payload._id;
         next();
       }
