@@ -10,7 +10,7 @@ export default function RegisterScreen(props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [frontError, setFrontError] = useState(false);
+  const [passwordMatch, setPasswordMatch] = useState(false);
   const dispatch = useDispatch();
   const redirect = props.location.search
     ? props.location.search.split('=')[1]
@@ -21,9 +21,9 @@ export default function RegisterScreen(props) {
 
   const submitHandler = e => {
     e.preventDefault();
-    if (confirmPassword !== password) setFrontError(true);
+    if (confirmPassword !== password) setPasswordMatch(true);
     else {
-      setFrontError(false);
+      setPasswordMatch(false);
       dispatch(register(name, email, password));
     }
   };
@@ -40,7 +40,7 @@ export default function RegisterScreen(props) {
         </div>
         {loading && <LoadingBox />}
         {error && <MessageBox variant="danger">{error}</MessageBox>}
-        {frontError && (
+        {passwordMatch && (
           <MessageBox variant="danger">Las contraseñas no coinciden</MessageBox>
         )}
         <div>
