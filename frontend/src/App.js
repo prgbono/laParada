@@ -14,6 +14,7 @@ import OrderScreen from './screens/OrderScreen.js';
 import RegisterScreen from './screens/RegisterScreen.js';
 import OrderHistoryScreen from './screens/OrderHistoryScreen.js';
 import ProfileScreen from './screens/ProfileScreen.js';
+import PrivateRoute from './components/PrivateRoute.js';
 
 function App() {
   const userLogin = useSelector(state => state.userLogin);
@@ -77,7 +78,10 @@ function App() {
           <Route path="/placeorder" component={PlaceOrderScreen}></Route>
           <Route path="/order/:id" component={OrderScreen}></Route>
           <Route path="/order-history" component={OrderHistoryScreen}></Route>
-          <Route path="/profile" component={ProfileScreen}></Route>
+          <PrivateRoute
+            path="/profile"
+            component={ProfileScreen}
+          ></PrivateRoute>
           <Route path="/" component={HomeScreen} exact></Route>
         </main>
         <footer className="row center">Mariscos La Parada SL</footer>

@@ -8,6 +8,7 @@ import {
   userLoginReducer,
   userRegisterReducer,
   userDetailsReducer,
+  userUpdateProfileReducer,
 } from './reducers/userReducers.js';
 import { cartReducer } from './reducers/cartReducers.js';
 import {
@@ -45,6 +46,7 @@ const reducer = combineReducers({
   userRegister: userRegisterReducer,
   userMineList: orderMineListReducer,
   userDetails: userDetailsReducer,
+  userUpdateProfile: userUpdateProfileReducer,
 });
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
