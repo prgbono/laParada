@@ -73,7 +73,7 @@ export default function PaymentMethodScreen(props) {
                 setPaymentMethod(e.target.value);
               }}
             ></input>
-            <label htmlFor="pickUpAtStore">Recogida en tienda</label>;
+            <label htmlFor="pickUpAtStore">Recogida en tienda</label>
           </div>
         </div>
         <div>

@@ -89,6 +89,7 @@ img.medium {
 
 img.large {
   width: 100%;
+  max-width: 70rem;
 }
 
 /* Card */

@@ -87,8 +87,9 @@ orderRouter.put(
         email_address: req.body.email_address,
       };
       const updateOrder = await order.save();
-      if (order.user) 
+      if (order.user) {
         const orderEmail = await sendOrderByEmail(updateOrder);
+      }
       res.send({ message: 'Pedido pagado', order: updateOrder });
     } else {
       res.status(404).send({ message: 'Pedido no encontrado' });
