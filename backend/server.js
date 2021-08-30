@@ -44,6 +44,8 @@ app.get('/', (req, res) => {
 
 // error handler
 app.use(function (err, req, res, next) {
+  console.log('Error handler, error: ', err);
+
   if (err.array) {
     // validation error
     err.status = 422;

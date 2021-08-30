@@ -1,5 +1,7 @@
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
+import nodemailer from 'nodemailer';
+import User from '../backend/models/UserModel.js';
 
 export const generateToken = user => {
   const { _id, name, email, isAdmin } = user;
@@ -50,6 +52,88 @@ export const hashPass = plainPass => {
   return bcrypt.hashSync(plainPass, 5);
 };
 
-// export const isCorrectPass = plainPass => {
-//   return bcrypt.compare(plainPass, _____);
-// };
+export const sendOrderByEmail = async order => {
+  const transport = nodemailer.createTransport({
+    service: process.env.EMAIL_SERVICE,
+    auth: {
+      user: process.env.EMAIL_SERVICE_USER,
+      pass: process.env.EMAIL_SERVICE_PASS,
+    },
+  });
+
+  const user = await User.getUserDetails(order.user);
+
+  return transport.sendMail({
+    from: process.env.EMAIL_SERVICE_FROM,
+    to: user.email,
+    subject: 'Mariscos La Parada - Hemos recibido correctamente tu pedido.',
+    html: payOrderEmailTemplate(user, order),
+  });
+};
+
+export const payOrderEmailTemplate = (user, order) => {
+  return `<h1>Gracias ${
+    user.name
+  } por comprar en <strong>Mariscos La Parada</strong></h1>
+  <h2>[Pedido ${order._id}] (${order.createdAt
+    .toString()
+    .substring(0, 10)})</h2>
+    <p>Estamos preparando tu pedido. Estos son los detalles del mismo:</p>
+    <table>
+      <thead>
+        <tr>
+          <td><strong>Artículo</strong></td>
+          <td><strong>Cantidad</strong></td>
+          <td><strong align="right">Precio</strong>
+        </td>
+      </thead>
+      <tbody>
+        ${order.orderItems
+          .map(
+            item => `
+        <tr>
+          <td>${item.name}</td>
+          <td align="center">${item.quantity}</td>
+          <td align="right"> ${item.price.toFixed(2)}€</td>
+        </tr>
+      `,
+          )
+          .join('\n')}
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="2">Subtotal:</td>
+          <td align="right"> ${order.itemsPrice.toFixed(2)}€</td>
+        </tr>
+        <tr>
+          <td colspan="2">IVA:</td>
+          <td align="right"> ${order.taxPrice.toFixed(2)}€</td>
+        </tr>
+        <tr>
+          <td colspan="2">Envío:</td>
+          <td align="right"> ${order.shippingPrice.toFixed(2)}€</td>
+        </tr>
+        <tr>
+          <td colspan="2"><strong>Total:</strong></td>
+          <td align="right"><strong> ${order.totalPrice.toFixed(
+            2,
+          )}€</strong></td>
+        </tr>
+        <tr>
+          <td colspan="2">Forma de pago:</td>
+          <td align="right">${order.paymentMethod}</td>
+        </tr>
+      </tfoot>
+    </table>
+    <h2>Dirección de envío:</h2>
+    <p>
+      ${order.shippingAddress.fullName},<br/>
+      ${order.shippingAddress.address},<br/>
+      ${order.shippingAddress.city},<br/>
+      ${order.shippingAddress.country},<br/>
+      ${order.shippingAddress.postalCode}<br/>
+    </p>
+    <hr/>
+    <p>Gracias por comprar en <strong>Mariscos La Parada SL.</strong></p>
+  `;
+};

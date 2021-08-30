@@ -1,7 +1,7 @@
 import express from 'express';
 import Order from './../models/OrderModel.js';
 import asyncHandler from 'express-async-handler';
-import { isJWTAuth } from './../utils.js';
+import { isJWTAuth, sendOrderByEmail } from './../utils.js';
 
 const orderRouter = express.Router();
 
@@ -83,9 +83,12 @@ orderRouter.put(
         id: req.body.id,
         status: req.body.status,
         update_time: req.body.update_time,
+        //FIXME: email_address useless so far
         email_address: req.body.email_address,
       };
       const updateOrder = await order.save();
+      if (order.user) 
+        const orderEmail = await sendOrderByEmail(updateOrder);
       res.send({ message: 'Pedido pagado', order: updateOrder });
     } else {
       res.status(404).send({ message: 'Pedido no encontrado' });

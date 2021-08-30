@@ -27,10 +27,6 @@ export default function ProfileScreen() {
 
   useEffect(() => {
     if (!user) {
-      console.log(
-        'ProfileScreen useEffect, !user, hago RESET y dispatch(detailsUser), user: ',
-        user,
-      );
       dispatch({ type: USER_UPDATE_PROFILE_RESET });
       dispatch(detailsUser(userInfo));
     } else {

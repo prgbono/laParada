@@ -17,6 +17,10 @@ const userSchema = new mongoose.Schema(
   },
 );
 
+userSchema.statics.getUserDetails = function (userId) {
+  return User.findById(userId);
+};
+
 // Model
 const User = mongoose.model('User', userSchema);
 

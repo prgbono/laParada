@@ -139,7 +139,7 @@ export default function PlaceOrderScreen(props) {
                   className="primary block"
                   disabled={cart.cartItems.length === 0}
                 >
-                  Pago
+                  Ir al pago
                 </button>
               </li>
               {loading && <LoadingBox />}
