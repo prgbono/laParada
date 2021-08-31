@@ -103,6 +103,7 @@ userRouter.get(
 );
 
 // PUT /profile
+// FIXME: Use partial updates with findOneAndUpdate
 userRouter.put(
   '/profile',
   isJWTAuth,

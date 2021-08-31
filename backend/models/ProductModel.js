@@ -4,8 +4,8 @@ import mongoose from 'mongoose';
 // Schema
 const productSchema = new mongoose.Schema(
   {
-    name: { type: String, required: true, trim: true },
-    price: { type: Number },
+    name: { type: String, required: true, trim: true, index: true },
+    price: { type: Number, index: true },
     stock: { type: Number, required: true },
     description: { type: String, trim: true },
     image: { type: String },

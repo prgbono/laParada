@@ -70,6 +70,7 @@ orderRouter.get(
 );
 
 // PUT /api/orders/:id/pay
+// FIXME: Use partial updates with findOneAndUpdate
 orderRouter.put(
   '/:id/pay',
   // isJWTAuth
