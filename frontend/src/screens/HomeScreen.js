@@ -13,7 +13,7 @@ export default function HomeScreen() {
   useEffect(() => {
     dispatch(listProducts());
   }, [dispatch]);
-
+  
   return (
     <>
       {loading ? (
@@ -23,7 +23,7 @@ export default function HomeScreen() {
       ) : (
         <div className="row center">
           {products.map(product => (
-            <Product key={product._id} product={product}></Product>
+            <Product key={product.id} product={product}></Product>
           ))}
         </div>
       )}
