@@ -33,7 +33,7 @@ function App() {
           <nav className="row">
             <ul>
               <Link className="brand" to="/">
-                La Parada
+                Company name
               </Link>
             </ul>
             <ul>
@@ -84,7 +84,7 @@ function App() {
           ></PrivateRoute>
           <Route path="/" component={HomeScreen} exact></Route>
         </main>
-        <footer className="row center">Mariscos La Parada SL</footer>
+        <footer className="row center">Company name</footer>
       </div>
     </Router>
   );

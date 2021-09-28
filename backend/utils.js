@@ -66,7 +66,7 @@ export const sendOrderByEmail = async order => {
   return transport.sendMail({
     from: process.env.EMAIL_SERVICE_FROM,
     to: user.email,
-    subject: 'Mariscos La Parada - Hemos recibido correctamente tu pedido.',
+    subject: 'Company name - Hemos recibido correctamente tu pedido.',
     html: payOrderEmailTemplate(user, order),
   });
 };
@@ -74,7 +74,7 @@ export const sendOrderByEmail = async order => {
 export const payOrderEmailTemplate = (user, order) => {
   return `<h1>Gracias ${
     user.name
-  } por comprar en <strong>Mariscos La Parada</strong></h1>
+  } por comprar en <strong>Company name</strong></h1>
   <h2>[Pedido ${order._id}] (${order.createdAt
     .toString()
     .substring(0, 10)})</h2>
@@ -134,6 +134,6 @@ export const payOrderEmailTemplate = (user, order) => {
       ${order.shippingAddress.postalCode}<br/>
     </p>
     <hr/>
-    <p>Gracias por comprar en <strong>Mariscos La Parada SL.</strong></p>
+    <p>Gracias por comprar en <strong>Company name</strong></p>
   `;
 };
