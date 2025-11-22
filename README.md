@@ -1,4 +1,4 @@
-You can have a look in www.mariscoslaparada.es
+You can have a look in www.mariscoslaparada.es (discontinued)
 
 ## AWS instance connection command
 
