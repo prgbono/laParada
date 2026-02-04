@@ -1,5 +1,7 @@
 You can have a look in www.mariscoslaparada.es (discontinued)
 
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/prgbono/laParada)
+
 ## AWS instance connection command
 
 <code>ssh [-p port] -i AWS_file.pem ubuntu@your_AWS_IP</code> from project folder
